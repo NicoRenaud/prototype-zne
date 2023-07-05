@@ -37,7 +37,6 @@ def zne_init(init: Callable) -> Callable:
         circuits: Iterable[QuantumCircuit] | QuantumCircuit | None = None,
         observables: Iterable[SparsePauliOp] | SparsePauliOp | None = None,
         parameters: Iterable[Iterable[Parameter]] | None = None,
-        options: dict | None = None,
         zne_strategy: ZNEStrategy | None = None,
         **kwargs,
     ) -> None:
@@ -47,6 +46,6 @@ def zne_init(init: Callable) -> Callable:
                 "deprecated as of Qiskit Terra 0.22.0. Use the 'run' method instead.",
             )
         self.zne_strategy = zne_strategy
-        return init(self, options=options, **kwargs)
+        return init(self, **kwargs)
 
     return _zne_init
